@@ -14,10 +14,24 @@ export function Home() {
     <HomeContainer>
       <form>
         <FormContainer>
-          <label htmlFor="task">Vou trabalhar em</label>
-          <TaskInput type="text" name="task" id="task" placeholder="Dê um nome ao seu projeto" />
+          <label htmlFor="task">I'm working in</label>
+          <TaskInput
+            type="text"
+            name="task"
+            id="task"
+            placeholder="give your project a name"
+            list="task-suggestions"
+          />
 
-          <label htmlFor="minutesAmout">durante</label>
+          <datalist id="task-suggestions">
+            <option value="Project 1" />
+            <option value="Project 2" />
+            <option value="Project 3" />
+            <option value="Project 4" />
+            <option value="Project 5" />
+          </datalist>
+
+          <label htmlFor="minutesAmout">for</label>
           <MinutesAmountInput
             type="number"
             name="minutesAmount"
@@ -25,7 +39,7 @@ export function Home() {
             placeholder="00"
           />
 
-          <span>minutos.</span>
+          <span>minutes.</span>
         </FormContainer>
 
         <CountdownContainer>

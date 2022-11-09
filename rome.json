@@ -3,10 +3,20 @@
     "enabled": true,
     "rules": {
       "recommended": true,
+      "nursery": {
+        "recommended": true
+      },
+      "security": {
+        "recommended": true
+      },
+      "correctness": {
+        "recommended": true
+      },
       "a11y": {
         "useKeyWithClickEvents": "off"
       },
       "style": {
+        "recommended": true,
         "noImplicitBoolean": "off"
       }
     }
@@ -14,7 +24,7 @@
   "formatter": {
     "enabled": true,
     "indentStyle": "space",
-    "lineWidth": 100,
+    "lineWidth": 80,
     "indentSize": 2
   },
   "javascript": {

@@ -16,7 +16,7 @@ export const HeaderContainer = styled.header`
       align-items: center;
       justify-content: center;
       text-decoration: none;
-      transition: 0.1s ease-in-out;
+      transition: color 0.1s ease-in-out, border-color 0.1s ease-in-out;
       color: ${({ theme }) => theme['gray-100']};
       border-top: 3px solid transparent;
       border-bottom: 3px solid transparent;
