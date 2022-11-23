@@ -1,4 +1,4 @@
-import { Play } from 'phosphor-react';
+import { Play } from "phosphor-react";
 import {
   CountdownContainer,
   CountdownSeparator,
@@ -7,7 +7,7 @@ import {
   MinutesAmountInput,
   StartCountdownButton,
   TaskInput,
-} from './styles';
+} from "./styles";
 
 export function Home() {
   return (
@@ -35,6 +35,8 @@ export function Home() {
           <MinutesAmountInput
             type="number"
             name="minutesAmount"
+            min={0}
+            max={60}
             id="minutesAmount"
             placeholder="00"
           />
