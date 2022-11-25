@@ -9,19 +9,22 @@
     "preview": "vite preview"
   },
   "dependencies": {
+    "@hookform/resolvers": "^2.9.10",
     "phosphor-react": "^1.4.1",
     "react": "^18.2.0",
     "react-dom": "^18.2.0",
+    "react-hook-form": "^7.39.5",
     "react-router-dom": "^6.4.3",
-    "styled-components": "^5.3.6"
+    "styled-components": "^5.3.6",
+    "zod": "^3.19.1"
   },
   "devDependencies": {
     "@types/react": "^18.0.25",
-    "@types/react-dom": "^18.0.8",
+    "@types/react-dom": "^18.0.9",
     "@types/styled-components": "^5.1.26",
     "@vitejs/plugin-react": "^2.2.0",
-    "rome": "^10.0.0",
-    "typescript": "^4.8.4",
-    "vite": "^3.2.3"
+    "rome": "^10.0.1",
+    "typescript": "^4.9.3",
+    "vite": "^3.2.4"
   }
 }

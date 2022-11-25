@@ -1,5 +1,7 @@
-import { Play } from "phosphor-react";
-import { useForm } from "react-hook-form";
+import { Play } from 'phosphor-react';
+import { useForm } from 'react-hook-form';
+import { zodResolver } from '@hookform/resolvers/zod';
+import zod from 'zod';
 
 import {
   CountdownContainer,
@@ -9,20 +11,33 @@ import {
   MinutesAmountInput,
   StartCountdownButton,
   TaskInput,
-} from "./styles";
+} from './styles';
+
+const newCycleFormValidationSchema = zod.object({
+  task: zod.string().min(1, 'Specify a task'),
+  minutesAmount: zod.number().min(5).max(60),
+});
+
+type NewCycleFormData = zod.infer<typeof newCycleFormValidationSchema>;
 
 export function Home() {
-  const { register, handleSubmit, watch } = useForm();
+  const { register, handleSubmit, watch } = useForm<NewCycleFormData>({
+    resolver: zodResolver(newCycleFormValidationSchema),
+    defaultValues: {
+      task: '',
+      minutesAmount: 0,
+    },
+  });
 
-  const isSubmitDisabled = !watch("task");
+  const isSubmitDisabled = !watch('task');
 
-  function handleCycleCreation(data: any) {
-    console.log("formSubmit");
+  function handleNewCycleCreation(data: any) {
+    console.log('formSubmit');
   }
 
   return (
     <HomeContainer>
-      <form onSubmit={handleSubmit(handleCycleCreation)}>
+      <form onSubmit={handleSubmit(handleNewCycleCreation)}>
         <FormContainer>
           <label htmlFor="task">I'm working in</label>
           <TaskInput
@@ -30,7 +45,7 @@ export function Home() {
             id="task"
             placeholder="give your project a name"
             list="task-suggestions"
-            {...register("task")}
+            {...register('task')}
           />
 
           <datalist id="task-suggestions">
@@ -48,7 +63,7 @@ export function Home() {
             max={60}
             id="minutesAmount"
             placeholder="00"
-            {...register("minutesAmount", { valueAsNumber: true })}
+            {...register('minutesAmount', { valueAsNumber: true })}
           />
 
           <span>minutes.</span>
