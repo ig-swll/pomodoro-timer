@@ -1,7 +1,7 @@
-import { createBrowserRouter, RouterProvider } from 'react-router-dom'
-import { DefaultLayout } from './layouts/DefaultLayout'
-import { History } from './pages/History'
-import { Home } from './pages/Home'
+import { createBrowserRouter, RouterProvider } from 'react-router-dom';
+import { DefaultLayout } from './layouts/DefaultLayout';
+import { History } from './pages/History';
+import { Home } from './pages/Home';
 
 const router = createBrowserRouter([
   {
@@ -18,8 +18,8 @@ const router = createBrowserRouter([
       },
     ],
   },
-])
+]);
 
 export function Router() {
-  return <RouterProvider router={router} />
+  return <RouterProvider router={router} />;
 }
