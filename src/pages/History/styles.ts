@@ -1,4 +1,4 @@
-import styled from 'styled-components';
+import styled from 'styled-components'
 
 export const HistoryContainer = styled.main`
   flex: 1;
@@ -8,9 +8,9 @@ export const HistoryContainer = styled.main`
 
   h1 {
     font-size: 1.5rem;
-    color: ${({ theme }) => theme['gray-100']}
+    color: ${({ theme }) => theme['gray-100']};
   }
-`;
+`
 
 export const HistoryList = styled.div`
   flex: 1;
@@ -50,7 +50,6 @@ export const HistoryList = styled.div`
       font-size: 0.875rem;
       line-height: 1.6;
 
-
       &:first-child {
         width: 50%;
         padding-left: 1.5rem;
@@ -61,16 +60,16 @@ export const HistoryList = styled.div`
       }
     }
   }
-`;
+`
 
-enum StatusColor {
-  yellow = 'yellow-500',
-  green = 'green-500',
-  red = 'red-500',
-}
+const StatusColor = {
+  yellow: 'yellow-500',
+  green: 'green-500',
+  red: 'red-500',
+} as const
 
 interface StatusProps {
-  statusColor: keyof typeof StatusColor;
+  statusColor: keyof typeof StatusColor
 }
 
 export const Status = styled.span<StatusProps>`
@@ -86,4 +85,4 @@ export const Status = styled.span<StatusProps>`
     aspect-ratio: 1/1;
     background: ${({ theme, statusColor }) => theme[StatusColor[statusColor]]};
   }
-`;
+`
