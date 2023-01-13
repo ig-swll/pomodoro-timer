@@ -7,7 +7,7 @@ export function History() {
   const { cycles } = useContext(CyclesContext)
 
   function formatStart(startDate: Date) {
-    return formatDistance(startDate, new Date(), { addSuffix: true })
+    return formatDistance(new Date(startDate), new Date(), { addSuffix: true })
   }
   return (
     <HistoryContainer>

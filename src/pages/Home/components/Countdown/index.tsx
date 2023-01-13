@@ -36,28 +36,29 @@ export function Countdown() {
 
   const totalRemainingSeconds = activeCycle ? totalSeconds - elapsedTime : 0
 
-  const remainingMinutes = String(
-    Math.floor(totalRemainingSeconds / 60),
-  ).padStart(2, '0')
-  const remainingSeconds = String(totalRemainingSeconds % 60).padStart(2, '0')
+  const minutes = Math.floor(totalRemainingSeconds / 60)
+  const seconds = totalRemainingSeconds % 60
+
+  const minutesStr = String(minutes).padStart(2, '0')
+  const secondsStr = String(seconds).padStart(2, '0')
 
   useEffect(() => {
     if (activeCycle) {
-      document.title = `${remainingMinutes}:${remainingSeconds} - ${activeCycle.task}`
+      document.title = `${minutesStr}:${secondsStr} - ${activeCycle.task}`
     }
 
     return () => {
       document.title = 'Pomodoro Timer'
     }
-  }, [remainingMinutes, remainingSeconds, activeCycle])
+  }, [minutesStr, secondsStr, activeCycle])
 
   return (
     <CountdownContainer>
-      <span>{remainingMinutes[0]}</span>
-      <span>{remainingMinutes[1]}</span>
+      <span>{minutesStr[0]}</span>
+      <span>{minutesStr[1]}</span>
       <CountdownSeparator>:</CountdownSeparator>
-      <span>{remainingSeconds[0]}</span>
-      <span>{remainingSeconds[1]}</span>
+      <span>{secondsStr[0]}</span>
+      <span>{secondsStr[1]}</span>
     </CountdownContainer>
   )
 }
