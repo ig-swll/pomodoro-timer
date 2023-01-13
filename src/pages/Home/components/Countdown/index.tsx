@@ -9,12 +9,6 @@ export function Countdown() {
     useContext(CyclesContext)
 
   const totalSeconds = activeCycle ? activeCycle.minutesAmount * 60 : 0
-  const totalRemainingSeconds = activeCycle ? totalSeconds - elapsedTime : 0
-
-  const remainingMinutes = String(
-    Math.floor(totalRemainingSeconds / 60),
-  ).padStart(2, '0')
-  const remainingSeconds = String(totalRemainingSeconds % 60).padStart(2, '0')
 
   useEffect(() => {
     let interval: number
@@ -22,12 +16,13 @@ export function Countdown() {
       interval = setInterval(() => {
         const secondsDiff = differenceInSeconds(
           new Date(),
-          activeCycle.startDate,
+          new Date(activeCycle.startDate),
         )
 
         if (secondsDiff >= totalSeconds) {
           finishActiveCycle()
-          updateElapsedTime(totalRemainingSeconds)
+
+          updateElapsedTime(totalSeconds)
           clearInterval(interval)
         } else {
           updateElapsedTime(secondsDiff)
@@ -35,16 +30,16 @@ export function Countdown() {
       }, 1000)
     }
     return () => {
-      // updateElapsedTime(0)
       clearInterval(interval)
     }
-  }, [
-    activeCycle,
-    finishActiveCycle,
-    totalRemainingSeconds,
-    totalSeconds,
-    updateElapsedTime,
-  ])
+  }, [activeCycle, finishActiveCycle, totalSeconds, updateElapsedTime])
+
+  const totalRemainingSeconds = activeCycle ? totalSeconds - elapsedTime : 0
+
+  const remainingMinutes = String(
+    Math.floor(totalRemainingSeconds / 60),
+  ).padStart(2, '0')
+  const remainingSeconds = String(totalRemainingSeconds % 60).padStart(2, '0')
 
   useEffect(() => {
     if (activeCycle) {
